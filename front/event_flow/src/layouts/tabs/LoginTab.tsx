@@ -14,6 +14,7 @@ const LoginTab: React.FC = () => {
         flex: 1,
         alignItems: "center",
         marginLeft: "30px",
+        justifyContent: "end",
       }}
     >
       <ButtonBase onClick={onClick}>

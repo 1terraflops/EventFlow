@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
+  Avatar,
   Box,
   Button,
+  ButtonBase,
   Container,
   IconButton,
   TextField,
@@ -50,48 +52,111 @@ const LoginPage = () => {
   const onSubmit = (data: any) => {
     handleLogin(data);
   };
+  const onGoToSignUp = (data: any) => {
+    navigate("/signUp");
+  };
+  const onForgetPassword = (data: any) => {};
   console.log(navigate);
   return (
-    <Container maxWidth="sm">
-      <IconButton onClick={() => navigate(-1)}>
-        <ArrowBackIcon></ArrowBackIcon>
-      </IconButton>
-      <Box sx={{ mt: 8, textAlign: "center" }}>
-        <Typography variant="h4" sx={{ mb: 4 }}>
-          Login
-        </Typography>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-            fullWidth
-            label="Email"
-            variant="outlined"
-            margin="normal"
-            {...register("email")}
-            error={!!errors.email}
-            helperText={errors.email?.message}
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            variant="outlined"
-            margin="normal"
-            {...register("password")}
-            error={!!errors.password}
-            helperText={errors.password?.message}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{ mt: 2 }}
-          >
-            Login
-          </Button>
-        </form>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        height: "100vh",
+        overflow: "hidden",
+      }}
+    >
+      <Box sx={{ position: "absolute", marginTop: "12px", marginLeft: "1%" }}>
+        <IconButton onClick={() => navigate("/")}>
+          <Avatar alt="logo" src="/logoWhite.png" variant="square" />
+        </IconButton>
       </Box>
-    </Container>
+      <Box sx={{ flex: 1, height: "100%" }}>
+        <img
+          alt="Auth logo"
+          src="/authLogo.png"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        ></img>
+      </Box>
+      <Box sx={{ flex: 1 }}>
+        <Box sx={{ margin: "10%" }}>
+          <Typography align="left" variant="h2" sx={{ mb: 4 }}>
+            Вітаю
+          </Typography>
+          <Typography align="left" variant="h5" sx={{ mb: 4 }}>
+            Введіть свої дані
+          </Typography>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <TextField
+              fullWidth
+              label="Email"
+              variant="outlined"
+              margin="normal"
+              {...register("email")}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+              slotProps={{
+                input: { sx: { borderRadius: "10vh" } },
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Password"
+              type="password"
+              variant="outlined"
+              margin="normal"
+              {...register("password")}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+              slotProps={{
+                input: { sx: { borderRadius: "10vh" } },
+              }}
+            />
+            <Box
+              sx={{ display: "flex", width: "100%", justifyContent: "right" }}
+            >
+              <ButtonBase onClick={onForgetPassword}>
+                <Typography align="right">Забули пароль?</Typography>
+              </ButtonBase>
+            </Box>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{
+                mt: 2,
+                width: "100%",
+                borderRadius: "10vh",
+                backgroundColor: "black",
+                color: "white",
+              }}
+            >
+              Увійти
+            </Button>
+          </form>
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+              mt: 2,
+            }}
+          >
+            <Typography>
+              {"Не маєте акаунту? "}
+              <ButtonBase onClick={onGoToSignUp}>
+                <Typography>
+                  <Box fontWeight="fontWeightBold" display="inline">
+                    Зареєструйтеся
+                  </Box>
+                </Typography>
+              </ButtonBase>
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

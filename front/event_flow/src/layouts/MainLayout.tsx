@@ -32,7 +32,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     logout();
   };
   return (
-    <>
+    <Box>
       <AppBar
         sx={{ background: "transparent", color: "black" }}
         position="static"
@@ -63,10 +63,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                   <Avatar alt="logo" src="/logo.png" variant="square" />
                 </IconButton>
               </Box>
-              <Box sx={{ flex: 2 }}>
+              <Box sx={{ flex: 2, alignContent: "center" }}>
                 <Tab label="Мої івенти" component={Link} to="/myEvents" />
               </Box>
-              <Box sx={{ flex: 2 }}>
+              <Box sx={{ flex: 2, alignContent: "center" }}>
                 <Tab
                   label="Організація івентів"
                   component={Link}
@@ -99,8 +99,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           </Box>
         </Toolbar>
       </AppBar>
-      <main>{children}</main>
-    </>
+      <Box>{children}</Box>
+      <Box
+        sx={{ backgroundColor: "black", height: "300px", width: "100%" }}
+      ></Box>
+    </Box>
   );
 };
 

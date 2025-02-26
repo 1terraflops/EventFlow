@@ -3,11 +3,13 @@ import { Box, Button, Container, Typography, IconButton } from "@mui/material";
 // import { Facebook, Instagram, Twitter, ArrowUpward } from "@mui/icons-material";
 // import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
+import { useEventStore } from "../../store/EventStore";
+import EventElement from "../EventElement";
 const HomePage = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   const navigate = useNavigate();
-
+  const events = useEventStore.getState().events;
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -23,15 +25,27 @@ const HomePage = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const handleSignUp = () => {
-    navigate("/signup"); // Перенаправлення на сторінку реєстрації
-  };
 
-  const handleLogIn = () => {
-    navigate("/login"); // Перенаправлення на сторінку входу
-  };
-
-  return <Box></Box>;
+  return (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, 300px)",
+        gridColumnGap: "20px",
+        paddingLeft: "5%",
+        paddingRight: "5%",
+        overflow: "hidden",
+        overflowY: "auto",
+        justifyContent: "space-between",
+        mt: 5,
+        mb: 5,
+      }}
+    >
+      {events.map((event) => (
+        <EventElement logo={event.logo} title={event.title}></EventElement>
+      ))}
+    </Box>
+  );
 };
 
 export default HomePage;

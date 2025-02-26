@@ -11,13 +11,14 @@ import { useUserStore } from "./store/UserStore";
 import HomePage from "./components/pages/HomePage";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginPage from "./components/pages/LoginPage";
-import RegisterPage from "./components/pages/RegisterPage";
+import SignUpPage from "./components/pages/SignUpPage";
 import MainLayout from "./layouts/MainLayout";
 import AdminPage from "./components/pages/AdminPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import UserInfoPage from "./components/pages/UserInfoPage";
 import EventsOrganizationPage from "./components/pages/EventsOrganizationPage";
 import MyEventsPage from "./components/pages/MyEventsPage";
+import EventPage from "./components/pages/EventPage";
 
 function App() {
   const userRole = useUserStore.getState().role;
@@ -34,9 +35,16 @@ function App() {
               </MainLayout>
             }
           />
-
+          <Route
+            path="/event/:eventName"
+            element={
+              <MainLayout>
+                <EventPage />
+              </MainLayout>
+            }
+          />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/signUp" element={<SignUpPage />} />
 
           {/* Домашня сторінка (захищена) */}
           <Route
