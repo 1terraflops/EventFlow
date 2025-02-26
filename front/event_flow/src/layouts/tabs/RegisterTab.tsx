@@ -6,7 +6,7 @@ import { Image } from "@mui/icons-material";
 const RegisterTab: React.FC = () => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate("/register");
+    navigate("/signUp");
   };
   return (
     <Box
@@ -15,6 +15,7 @@ const RegisterTab: React.FC = () => {
         flex: 1,
         alignItems: "center",
         marginLeft: "30px",
+        justifyContent: "end",
       }}
     >
       <ButtonBase onClick={onClick}>

@@ -17,7 +17,7 @@ interface UserState {
   setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
 
-export const useUserStore = create<UserState>((set) => ({
+export const useUserStore = create<UserState>((set, get) => ({
   isAuthenticated: false,
   userProfile: null,
   role: "",
