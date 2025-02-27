@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,6 +91,22 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     }
+}
+
+# Email
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = ""  # SMTP
+EMAIL_PORT = 465  # Порт SMTP
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "noreply.sigma@xcdto.xyz"  # e-mail
+EMAIL_HOST_PASSWORD = ""  # Пароль
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Відправник за замовчуванням
+
+
+# JWT
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),  # Access-токен буде діяти 1 годину.
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),  # Refresh-токен – 7 днів.
 }
 
 
