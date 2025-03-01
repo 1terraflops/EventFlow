@@ -1,3 +1,4 @@
+# Оновлення models.py
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -10,6 +11,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+    
+    @property
+    def is_active(self):
+        """Перевіряє чи івент активний (ще не завершився)"""
+        from django.utils import timezone
+        return self.end_date > timezone.now()
     
 class EventRegistration(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="registrations")
