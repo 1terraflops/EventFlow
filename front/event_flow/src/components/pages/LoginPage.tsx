@@ -29,11 +29,12 @@ const schema = yup
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const signIn = useUserStore.getState().signIn;
   const handleLogin = async (data: any) => {
     try {
-      const { userRole, profile } = await loginUser(data.email, data.password);
-      signIn(await profile, userRole);
+      const { /* userRole, */ profile } = await loginUser(
+        data.email,
+        data.password
+      );
       navigate("/");
     } catch (error: any) {
       console.error("Login failed:", error);
@@ -56,7 +57,6 @@ const LoginPage = () => {
     navigate("/signUp");
   };
   const onForgetPassword = (data: any) => {};
-  console.log(navigate);
   return (
     <Box
       sx={{

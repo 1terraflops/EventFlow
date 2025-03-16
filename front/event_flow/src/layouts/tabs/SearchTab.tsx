@@ -9,12 +9,12 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+import { getEvents, searchEvents } from "../../requests/Events";
 
 const SearchTab: React.FC = () => {
   const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log("Enter");
-      e.preventDefault();
+      searchQuery === "" ? getEvents() : searchEvents(searchQuery);
     }
   };
   const [searchQuery, setSearchQuery] = useState("");

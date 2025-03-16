@@ -19,9 +19,10 @@ import UserInfoPage from "./components/pages/UserInfoPage";
 import EventsOrganizationPage from "./components/pages/EventsOrganizationPage";
 import MyEventsPage from "./components/pages/MyEventsPage";
 import EventPage from "./components/pages/EventPage";
+import AddEventPage from "./components/pages/AddEventPage";
 
 function App() {
-  const userRole = useUserStore.getState().role;
+  // const userRole = useUserStore.getState().role;
   return (
     <div className="App">
       <Router>
@@ -68,6 +69,16 @@ function App() {
             }
           />
           <Route
+            path="/addEvent"
+            element={
+              <ProtectedRoute allowAllRegistered={true} userRole={""}>
+                <MainLayout>
+                  <AddEventPage />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/userInfo"
             element={
               <ProtectedRoute allowAllRegistered={true} userRole={""}>
@@ -88,7 +99,7 @@ function App() {
             }
           />
 
-          {/* Адміністративна сторінка (захищена, тільки для admin) */}
+          {/* Адміністративна сторінка (захищена, тільки для admin)
           <Route
             path="/admin"
             element={
@@ -96,7 +107,7 @@ function App() {
                 <AdminPage />
               </ProtectedRoute>
             }
-          />
+          /> */}
         </Routes>
       </Router>
     </div>

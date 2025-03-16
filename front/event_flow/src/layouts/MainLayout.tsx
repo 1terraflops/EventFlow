@@ -32,7 +32,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     logout();
   };
   return (
-    <Box>
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <AppBar
         sx={{ background: "transparent", color: "black" }}
         position="static"
@@ -79,7 +79,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <SearchTab></SearchTab>
 
             {isAuthenticated ? (
-              <Box sx={{ flex: 1 }}>
+              <Box sx={{ flex: 1, justifyContent: "end", display: "flex" }}>
                 <IconButton component={Link} to="/profile">
                   <Avatar alt="User Avatar" src="/path-to-avatar.jpg" />
                 </IconButton>
@@ -101,7 +101,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       </AppBar>
       <Box>{children}</Box>
       <Box
-        sx={{ backgroundColor: "black", height: "300px", width: "100%" }}
+        sx={{
+          backgroundColor: "black",
+          height: "300px",
+          width: "100%",
+          mt: "auto",
+        }}
       ></Box>
     </Box>
   );
