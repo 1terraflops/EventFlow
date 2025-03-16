@@ -30,7 +30,7 @@ const schema = yup
       .string()
       .oneOf([yup.ref("password")], "Passwords must match")
       .required("Confirm password is required"),
-    age: yup.number().positive().integer().required("Age is required"),
+    // age: yup.number().positive().integer().required("Age is required"),
     name: yup.string().required("Name is required"),
     surname: yup.string().required("Surname is required"),
   })
@@ -44,18 +44,16 @@ const SignUpPage = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const signIn = useUserStore.getState().signIn;
   const navigate = useNavigate();
   const onSubmit = async (data: any) => {
     try {
-      const { userRole, profile } = await registerUser(
-        data.email,
-        data.password,
-        data.age,
-        data.name,
-        data.surname
-      );
-      signIn(await profile, userRole);
+      const /* userRole, */ profile = await registerUser(
+          data.email,
+          data.password,
+          // data.age,
+          data.name,
+          data.surname
+        );
       navigate("/");
     } catch (error: any) {
       alert("Invalid credentials");
@@ -132,7 +130,7 @@ const SignUpPage = () => {
                 input: { sx: { borderRadius: "10vh" } },
               }}
             />
-            <TextField
+            {/* <TextField
               fullWidth
               label="Age"
               type="number"
@@ -144,7 +142,7 @@ const SignUpPage = () => {
               slotProps={{
                 input: { sx: { borderRadius: "10vh" } },
               }}
-            />
+            /> */}
             <TextField
               fullWidth
               label="Name"

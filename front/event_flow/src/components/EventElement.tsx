@@ -24,7 +24,7 @@ const EventElement: React.FC<EventElementProps> = ({ logo, title }) => {
         src={logo}
         style={{ width: "100%", height: "auto" }}
       ></img>
-      <Typography align="left" sx={{ marginTop: "10px" }}>
+      <Typography variant="h4" align="left" sx={{ marginTop: "10px" }}>
         {title}
       </Typography>
       <Box

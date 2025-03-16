@@ -5,11 +5,14 @@ import { Box, Button, Container, Typography, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useEventStore } from "../../store/EventStore";
 import EventElement from "../EventElement";
+import { getEvents } from "../../requests/Events";
 const HomePage = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
-
   const navigate = useNavigate();
-  const events = useEventStore.getState().events;
+  const events = useEventStore((state) => state.events);
+  useEffect(() => {
+    getEvents();
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -42,7 +45,11 @@ const HomePage = () => {
       }}
     >
       {events.map((event) => (
-        <EventElement logo={event.logo} title={event.title}></EventElement>
+        <EventElement
+          logo={"/eventElementLogoExample.png"}
+          title={event.title}
+          key={event.id}
+        ></EventElement>
       ))}
     </Box>
   );
