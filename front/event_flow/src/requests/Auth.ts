@@ -108,6 +108,7 @@ export const updateUser = async (
     profileUpdateRequest
   );
   const profile = response.data;
+  getProfile(profile.user_id);
   return profile;
 };
 export const refreshToken = async () => {

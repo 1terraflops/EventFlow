@@ -20,7 +20,7 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  const isAuthenticated = useUserStore.getState().isAuthenticated;
+  const isAuthenticated = useUserStore((state) => state.isAuthenticated);
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("access_token");

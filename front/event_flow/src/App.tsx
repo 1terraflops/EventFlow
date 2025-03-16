@@ -20,6 +20,7 @@ import EventsOrganizationPage from "./components/pages/EventsOrganizationPage";
 import MyEventsPage from "./components/pages/MyEventsPage";
 import EventPage from "./components/pages/EventPage";
 import AddEventPage from "./components/pages/AddEventPage";
+import ProfileEditPage from "./components/pages/ProfileEditPage";
 
 function App() {
   // const userRole = useUserStore.getState().role;
@@ -94,6 +95,16 @@ function App() {
               <ProtectedRoute allowAllRegistered={true} userRole={""}>
                 <MainLayout>
                   <ProfilePage />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile/edit"
+            element={
+              <ProtectedRoute allowAllRegistered={true} userRole={""}>
+                <MainLayout>
+                  <ProfileEditPage />
                 </MainLayout>
               </ProtectedRoute>
             }
