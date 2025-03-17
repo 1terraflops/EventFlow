@@ -2,7 +2,7 @@
 
 ## Відео демонстрація
 
-[![Демонстрація проєкту](https://img.youtube.com/vi/601Y6blaUFs/0.jpg)](https://youtu.be/601Y6blaUFs)
+[![Демонстрація проєкту](https://img.youtube.com/vi/eLj8xczpjpI/0.jpg)](https://youtu.be/eLj8xczpjpI)
 
 Проєкт складається з серверної частини (backend), написаної на Django (Python), та клієнтської частини (frontend), написаної на TypeScript.
 
